@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.curs.ru/authserver config.xsd" xmlns="http://www.curs.ru/authserver">
+
+	<!-- Common settings -->
+	<common>
+		<threadcount>4</threadcount>
+		<authsessions initialCapacity="16" loadFactor="75" concurrencyLevel="16"/>
+		<appsessions initialCapacity="16" loadFactor="75" concurrencyLevel="16"/>
+		<lockouttime>10</lockouttime>
+		<loginattemptsallowed>5</loginattemptsallowed>
+		<setsettingstoken>1234</setsettingstoken>
+		<getuserlisttoken>5678</getuserlisttoken>
+		<showtimetounlockuser>true</showtimetounlockuser>
+		<checkpasswordhashonly>true</checkpasswordhashonly>
+	</common>
+
+	<!-- Provider LDAP ApacheDS-->
+	<!--<ldapserver>-->
+		<!--<id>test</id>-->
+		<!--<group_providers>Group 1</group_providers>-->
+		<!--<logging>true</logging>-->
+		<!--<servertype>ApacheDS</servertype>-->
+		<!--<url>ldap://localhost:10389</url>-->
+		<!--<usessl>false</usessl>-->
+		<!--<sat>Simple</sat>-->
+		<!--<searchbase>ou=users,ou=system</searchbase>-->
+		<!--<searchreturningattributes-->
+				<!--SID="entryUUID"-->
+				<!--login="uid"-->
+				<!--name="cn"-->
+				<!--email="mail"-->
+				<!--phone="homePhone"-->
+				<!--organization = "o"-->
+				<!--fax = "facsimileTelephoneNumber"-->
+		<!--/>-->
+		<!--<searchfilterforuser>-->
+			<!--(&amp;(objectClass=inetOrgPerson)(uid=%s))-->
+		<!--</searchfilterforuser>-->
+		<!--<searchfilterforimport>-->
+			<!--(&amp;(objectClass=inetOrgPerson))-->
+		<!--</searchfilterforimport>-->
+	<!--</ldapserver>-->
+
+	<!-- Provider LDAP ActiveDirectory-->
+	<!--<ldapserver>-->
+		<!--<id>test2</id>-->
+		<!--<group_providers>Group1</group_providers>-->
+		<!--<domain_name>Office</domain_name>-->
+		<!--<logging>true</logging>-->
+		<!--<servertype>MSActiveDirectory</servertype>-->
+		<!--<url>ldap://srv:389</url>-->
+		<!--<usessl>false</usessl>-->
+		<!--<sat>DIGEST_MD5</sat>-->
+		<!--<searchbase>CN=Builtin,DC=curs,DC=ru</searchbase>-->
+		<!--<searchbase>CN=Users,DC=curs,DC=ru</searchbase>-->
+		<!--<searchbase>OU=Office,DC=curs,DC=ru</searchbase>-->
+		<!--<searchreturningattributes-->
+				<!--SID="objectSid"-->
+				<!--login="sAMAccountName"-->
+				<!--name="name"-->
+				<!--email="targetAddress"-->
+				<!--phone="telephoneNumber"-->
+				<!--organization = ""-->
+				<!--fax = ""-->
+		<!--/>-->
+		<!--<searchfilterforuser>-->
+			<!--(&amp;(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2))(sAMAccountName=%s))-->
+		<!--</searchfilterforuser>-->
+		<!--<searchfilterforimport>-->
+			<!--(&amp;(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))-->
+		<!--</searchfilterforimport>-->
+	<!--</ldapserver>-->
+
+	<!-- Provider XML-файл-->
+	<!--<xmlfile>-->
+		<!--<id>test3</id>-->
+		<!--<group_providers></group_providers>-->
+		<!--<logging>true</logging>-->
+		<!--<url>D:/workspace/mellophone/WebContent/config/users.xml</url>-->
+	<!--</xmlfile>-->
+
+	<!-- Провайдер база данных-->
+	<!--<sqlserver>-->
+		<!--<id>test4</id>-->
+		<!--<logging>true</logging>-->
+		<!--<url>jdbc:sqlserver://localhost\\SQL8R2_RUS_TEST2:1145;databaseName=showcase</url>-->
+		<!--<connectionusername>sa</connectionusername>-->
+		<!--<connectionpassword>F708420Dx</connectionpassword>-->
+		<!--<table>Пользователи</table>-->
+		<!--<fieldlogin>Login</fieldlogin>-->
+		<!--<fieldpassword>password</fieldpassword>-->
+		<!--<fieldblocked>locked</fieldblocked>-->
+		<!--<hashalgorithm>SHA-256</hashalgorithm>-->
+		<!--<localsecuritysalt>0763bdd890421f02bba7bfe8b456c69f</localsecuritysalt>-->
+		<!--<procpostprocess>postProcess</procpostprocess>-->
+		<!--<searchreturningattributes-->
+				<!--SID="objectSid"-->
+				<!--login="Login field"-->
+				<!--name="name field"-->
+				<!--email="email field"-->
+				<!--phone="phone field"-->
+		<!--/>-->
+	<!--</sqlserver>-->
+
+	<!-- Provicer HTTP-->
+	<!--<httpserver>-->
+		<!--<logging>true</logging>-->
+		<!--<url>http://info.ondp2012.ru/security/</url>-->
+		<!--<validateuser>ValidateUser</validateuser>-->
+		<!--<userinfobyname>User/%s</userinfobyname>-->
+		<!--<userinfobyid>User/Id/%s</userinfobyid>-->
+	<!--</httpserver>-->
+</config>
